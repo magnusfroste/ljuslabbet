@@ -21,8 +21,14 @@ body{
 #hud{
   display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:8px 14px;
   border-bottom:1px solid rgba(30,58,74,.12);min-width:0;
+  /* minst 80 px: Kotten (56 px + 12 px kant) ska hamna helt i raden och aldrig
+     över spelplanen. Duken mäter sig själv med ResizeObserver, så den tål det. */
+  min-height:80px;
 }
-#niva-chips{display:flex;gap:8px}
+/* Skolappars hemknapp (Kotten) ligger uppe till vänster, 12 px in och 56 px bred.
+   Nivåknapparna flyttas 80 px åt höger så att första knappen hamnar bredvid Kotten.
+   Spelplanen (#duk) rörs inte. */
+#niva-chips{display:flex;gap:8px;padding-left:80px}
 .chip{
   width:44px;height:44px;border-radius:50%;border:2px solid rgba(30,58,74,.22);
   background:#fff;color:var(--black);font:700 17px/1 "Nunito",sans-serif;cursor:pointer;
