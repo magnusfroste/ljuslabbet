@@ -63,6 +63,8 @@
     canvas._dpr = dpr;
   }
   window.addEventListener('resize', passaIn);
+  window.addEventListener('load', passaIn);
+  if (window.ResizeObserver) new ResizeObserver(passaIn).observe(scen);
   window.addEventListener('orientationchange', function () { setTimeout(passaIn, 150); });
 
   function tillVarld(klientX, klientY) {
@@ -125,6 +127,7 @@
   // ---------- pekdon ----------
   canvas.addEventListener('pointerdown', function (e) {
     if (S.lage !== 'spel') return;
+    passaIn();
     var p = tillVarld(e.clientX, e.clientY);
     for (var i = 0; i < S.speglar.length; i++) {
       var m = S.speglar[i];
@@ -140,6 +143,7 @@
   });
   canvas.addEventListener('pointermove', function (e) {
     if (!S.drag || S.lage !== 'spel') return;
+    passaIn();
     var p = tillVarld(e.clientX, e.clientY);
     var m = S.speglar[S.drag.i];
     var v = F.deg(Math.atan2(p.y - m.y, p.x - m.x)) + S.drag.off;
