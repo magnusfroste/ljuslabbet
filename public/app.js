@@ -131,9 +131,12 @@
     var p = tillVarld(e.clientX, e.clientY);
     for (var i = 0; i < S.speglar.length; i++) {
       var m = S.speglar[i];
-      if (Math.hypot(p.x - m.x, p.y - m.y) < Math.max(120, 30 / S.skala)) {
+      var avst = Math.hypot(p.x - m.x, p.y - m.y);
+      if (avst < Math.max(120, 30 / S.skala)) {
         S.vald = i;
-        S.drag = { i: i, off: m.th - F.deg(Math.atan2(p.y - m.y, p.x - m.x)) };
+        // Greppar man rakt på mitten finns ingen riktning – då utgår vi från rattens nuvarande vinkel.
+        var pek = avst < 8 ? m.th : F.deg(Math.atan2(p.y - m.y, p.x - m.x));
+        S.drag = { i: i, off: m.th - pek };
         try { canvas.setPointerCapture(e.pointerId); } catch (err) {}
         tipsEl.hidden = true;
         uppdatera();
