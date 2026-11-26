@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<title>Ljuslabbet – reflektion och brytning</title>
+<meta name="description" content="Ljuslabbet: vrid speglar så att laserstrålen träffar lampan. Tränar reflektion, brytning och totalreflexion i fysik åk 7–9.">
+<meta name="theme-color" content="#FBF7EE">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="stylesheet" href="styles.css">
+<script src="https://www.skolappar.com/kotten.js" defer></script>
+</head>
+<body>
+<div id="app">
+  <header id="hud">
+    <div id="niva-chips" aria-label="Nivåer"></div>
+    <div id="vinkel" aria-live="polite">vrid på spegeln</div>
+    <div id="stjarnor" aria-label="Stjärnor">★ 0</div>
+    <button id="hintknapp" class="knapp" aria-label="Visa en ledtråd">Ledtråd</button>
+    <button id="ljudknapp" class="knapp" aria-label="Stäng av ljudet">🔊</button>
+  </header>
+
+  <main id="scen">
+    <canvas id="duk" aria-label="Spelplan med laser, speglar, vatten och en lampa"></canvas>
+    <div id="tipsbubbla" hidden></div>
+  </main>
+
+  <footer id="reglage" aria-label="Vrid spegeln">
+    <button class="vrid" data-d="-10" aria-label="Vrid tio grader motsols">−10°</button>
+    <button class="vrid" data-d="-1" aria-label="Vrid en grad motsols">−1°</button>
+    <span id="reglage-text">vrid spegeln</span>
+    <button class="vrid" data-d="1" aria-label="Vrid en grad medsols">+1°</button>
+    <button class="vrid" data-d="10" aria-label="Vrid tio grader medsols">+10°</button>
+  </footer>
+</div>
+
+<div id="startskarm">
+  <div class="ark">
+    <h1>Ljuslabbet</h1>
+    <p class="ingress">En laser, några speglar och en lampa som ska lysa. Dra i ratten på spegeln och se hur strålen viker sig.</p>
+    <ul class="punkter">
+      <li>Nivå 1–2: ljuset studsar – infallsvinkel och reflektionsvinkel är lika stora.</li>
+      <li>Nivå 3–4: ljuset går ner i vatten och bryts. Där gäller ett annat samband.</li>
+      <li>Ingen tid, inga liv. Du kan vrida hur mycket du vill.</li>
+    </ul>
+    <button id="starta" class="spela">Spela</button>
+    <p class="larare"><strong>För läraren, fysik åk 7–9.</strong> Ur Lgr22, det centrala innehållet:
+      ”Hur ljus breder ut sig, reflekteras och bryts.” Eleven tränar reflektionslagen, brytning vid
+      en vattenyta (n = 1,33) och totalreflexion genom att räkna ut vilken spegelvinkel som krävs.
+      Vinklarna visas i grader medan strålen ritas om. Källa: Skolverket, Lgr22.</p>
+  </div>
+</div>
+
+<div id="klarskarm" hidden>
+  <div class="ark litet">
+    <div id="klar-stjarna" class="stor-stjarna">★</div>
+    <h2 id="klar-rubrik">Nivå 1 klar</h2>
+    <p>Strålen träffade lampan.</p>
+    <button id="nasta" class="spela">Nästa nivå</button>
+    <button id="stangKlar" class="lank">Tillbaka till start</button>
+  </div>
+</div>
+
+<script src="fysik.js"></script>
+<script src="tal.js"></script>
+<script src="ljud/lines.js"></script>
+<script src="ljud/rosten.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

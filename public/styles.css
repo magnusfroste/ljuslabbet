@@ -1,0 +1,111 @@
+:root{
+  --papper:#FBF7EE;
+  --black:#1E3A4A;
+  --dampad:rgba(30,58,74,.62);
+  --gul:#FFD166;
+  --rod:#E8452C;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html,body{margin:0;padding:0;height:100%;overflow:hidden}
+body{
+  background:var(--papper);
+  color:var(--black);
+  font-family:"Nunito","Trebuchet MS",system-ui,sans-serif;
+  -webkit-user-select:none;user-select:none;
+  touch-action:manipulation;
+  overscroll-behavior:none;
+}
+#app{position:fixed;inset:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto;grid-template-columns:minmax(0,1fr)}
+
+#hud{
+  display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:8px 14px;
+  border-bottom:1px solid rgba(30,58,74,.12);min-width:0;
+}
+#niva-chips{display:flex;gap:8px}
+.chip{
+  width:44px;height:44px;border-radius:50%;border:2px solid rgba(30,58,74,.22);
+  background:#fff;color:var(--black);font:700 17px/1 "Nunito",sans-serif;cursor:pointer;
+}
+.chip.nu{background:var(--black);color:#fff;border-color:var(--black)}
+.chip.klar{background:var(--gul);border-color:#C98A12}
+#vinkel{
+  flex:1 1 180px;min-width:0;text-align:center;font-weight:700;font-size:17px;color:var(--dampad);
+  font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+#stjarnor{font-weight:800;font-size:20px;color:#C98A12;min-width:58px;text-align:right}
+.knapp{
+  min-height:44px;min-width:44px;padding:0 14px;border-radius:12px;
+  border:2px solid rgba(30,58,74,.2);background:#fff;color:var(--black);
+  font:700 16px/1 "Nunito",sans-serif;cursor:pointer;
+}
+.knapp:active{transform:translateY(1px)}
+
+#scen{position:relative;overflow:hidden;background:var(--papper);min-width:0;min-height:0}
+#duk{display:block;touch-action:none}
+#tipsbubbla{
+  position:absolute;left:50%;top:12px;transform:translateX(-50%);
+  max-width:min(560px,92%);background:#fff;border:2px solid var(--gul);
+  border-radius:14px;padding:10px 16px;font-size:16px;line-height:1.35;
+  box-shadow:0 6px 18px rgba(30,58,74,.12);pointer-events:none;
+}
+
+#reglage{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:8px 12px 10px;border-top:1px solid rgba(30,58,74,.12);
+}
+#reglage-text{font-size:14px;color:var(--dampad);min-width:96px;text-align:center}
+.vrid{
+  min-width:76px;min-height:52px;border-radius:14px;border:2px solid rgba(30,58,74,.2);
+  background:#fff;color:var(--black);font:700 19px/1 "Nunito",sans-serif;cursor:pointer;
+}
+.vrid:active{background:var(--gul)}
+
+/* start- och klarskärm */
+#startskarm,#klarskarm{
+  position:fixed;inset:0;display:grid;place-items:center;background:var(--papper);z-index:20;
+  overflow:auto;
+}
+.ark{
+  max-width:640px;padding:22px 26px;text-align:left;
+}
+.ark h1{font-size:40px;line-height:1;margin:0 0 10px;letter-spacing:-.5px}
+.ingress{font-size:19px;line-height:1.45;margin:0 0 14px}
+.punkter{margin:0 0 18px;padding-left:20px;font-size:16px;line-height:1.5;color:var(--dampad)}
+.punkter li{margin-bottom:6px}
+.spela{
+  display:inline-block;min-height:56px;padding:0 34px;border-radius:16px;border:none;
+  background:var(--black);color:#fff;font:800 20px/1 "Nunito",sans-serif;cursor:pointer;
+}
+.larare{
+  margin-top:18px;padding-top:14px;border-top:1px solid rgba(30,58,74,.14);
+  font-size:14px;line-height:1.5;color:var(--dampad);
+}
+.ark.litet{text-align:center}
+.stor-stjarna{font-size:64px;color:#C98A12;line-height:1}
+.ark.litet h2{font-size:28px;margin:6px 0 4px}
+.ark.litet p{color:var(--dampad);margin:0 0 18px}
+.lank{
+  display:block;margin:12px auto 0;background:none;border:none;color:var(--dampad);
+  font:700 15px/1 "Nunito",sans-serif;text-decoration:underline;cursor:pointer;min-height:44px;
+}
+
+@media (max-height:560px){
+  .ark h1{font-size:30px}
+  .ingress{font-size:16px}
+  .punkter{font-size:14px}
+  .larare{font-size:12px}
+  .spela{min-height:48px;font-size:18px}
+}
+@media (max-width:560px){
+  #hud{padding:6px 8px;gap:6px}
+  #vinkel{order:4;flex:1 1 100%;font-size:15px;padding-bottom:2px}
+  .chip{width:40px;height:40px}
+  #vinkel{font-size:15px}
+  #reglage{gap:6px}
+  .vrid{min-width:62px;min-height:48px;font-size:17px}
+  #reglage-text{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important}
+}
