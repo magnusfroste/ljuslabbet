@@ -40,12 +40,7 @@
       if (window.__rost && window.__rost(text)) return;
     } catch (e) {}
     try {
-      if ('speechSynthesis' in window) {
-        var u = new SpeechSynthesisUtterance(text);
-        u.lang = 'sv-SE'; u.rate = 0.95;
-        window.speechSynthesis.cancel();
-        window.speechSynthesis.speak(u);
-      }
+      
     } catch (e) {}
   }
 
@@ -212,7 +207,7 @@
     ljudKnapp.textContent = S.ljud ? '🔊' : '🔇';
     ljudKnapp.setAttribute('aria-label', S.ljud ? 'Stäng av ljudet' : 'Sätt på ljudet');
     if (!S.ljud) {
-      try { if ('speechSynthesis' in window) window.speechSynthesis.cancel(); } catch (e) {}
+      try { if (window.__rostStopp) window.__rostStopp(); } catch (e) {}
       if (window.skolappar && window.skolappar.event) {
         try { window.skolappar.event('sound_off'); } catch (e) {}
       }
